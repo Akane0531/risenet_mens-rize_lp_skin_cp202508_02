@@ -74,7 +74,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
 
       <div class="cta bg-bg2 text-white">
         <div class="cta__inner">
-          <p class="cta__lead text-accent">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+          <p class="cta__lead text-accent">60秒で予約完了！相談だけでもOK</p>
           <a class="button" href="/skin/counseling/">
             <div class="button__icon button__icon--before"></div>
             <div class="button__inner">
@@ -96,7 +96,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
 
       <div class="cta bg-bg2 text-white">
         <div class="cta__inner">
-          <p class="cta__lead text-accent">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+          <p class="cta__lead text-accent">60秒で予約完了！相談だけでもOK</p>
           <a class="button" href="/skin/counseling/">
             <div class="button__icon button__icon--before"></div>
             <div class="button__inner">
@@ -151,7 +151,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
       <div class="cta bg-bg2 text-white">
         <img src="./assets/img/home/cta_01.png" alt="">
         <div class="cta__inner">
-          <p class="cta__lead text-accent">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+          <p class="cta__lead text-accent">60秒で予約完了！相談だけでもOK</p>
           <a class="button" href="/skin/counseling/">
             <div class="button__icon button__icon--before"></div>
             <div class="button__inner">
@@ -171,7 +171,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
 
       <div class="cta bg-bg2 text-white">
         <div class="cta__inner">
-          <p class="cta__lead text-accent">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+          <p class="cta__lead text-accent">60秒で予約完了！相談だけでもOK</p>
           <a class="button" href="/skin/counseling/">
             <div class="button__icon button__icon--before"></div>
             <div class="button__inner">
@@ -332,7 +332,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
         </div>
         <div class="cta">
           <div class="cta__inner">
-            <p class="cta__lead">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+            <p class="cta__lead">60秒で予約完了！相談だけでもOK</p>
             <a class="button" href="/skin/counseling/">
               <div class="button__icon button__icon--before"></div>
               <div class="button__inner">
@@ -379,7 +379,7 @@ $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の
 
         <div class="cta">
           <div class="cta__inner">
-            <p class="cta__lead">60秒で予約完了 <span class="icon-smile"></span> 相談だけでもOK</p>
+            <p class="cta__lead">60秒で予約完了！相談だけでもOK</p>
             <a class="button" href="/skin/counseling/">
               <div class="button__icon button__icon--before"></div>
               <div class="button__inner">
