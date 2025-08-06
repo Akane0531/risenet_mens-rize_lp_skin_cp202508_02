@@ -462,18 +462,18 @@
   }
 
   .block__inner {
-    margin-inline: max(34px, (100% - 600px)/2);
-    background-color: #cecbc9;
     padding: 30px 40px;
+    margin-inline: max(34px, (100% - 600px)/2);
     font-size: 18px;
     font-weight: 400;
     line-height: 2;
     color: #241f1f;
+    background-color: #cecbc9;
     border-radius: 5px;
     @include mobile {
+      padding: vw-calc(30, sm) vw-calc(40, sm);
       margin-inline: max(vw-calc(34, sm), ((100% - vw-calc(640, sm)) / 2));
       font-size: vw-calc(18, sm);
-      padding: vw-calc(30, sm) vw-calc(40, sm);
       border-radius: vw-calc(5, sm);
     }
   }
