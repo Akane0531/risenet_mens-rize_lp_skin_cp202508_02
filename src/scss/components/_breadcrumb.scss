@@ -1,0 +1,32 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'breadcrumb') {
+  .c-#{$className}__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  .c-#{$className}__list-item {
+    display: flex;
+    gap: 8px;
+    font-size: rem(14px);
+
+    &:not(:last-child) {
+      &::after {
+        color: var(--color-text-weak);
+        content: '/';
+      }
+    }
+  }
+
+  a.c-#{$className}__link {
+    transition: 0.3s;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}

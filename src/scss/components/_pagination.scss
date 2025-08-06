@@ -1,0 +1,89 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'pagination') {
+  .c-#{$className} {
+    .nav-links {
+      display: grid;
+      justify-content: center;
+    }
+
+    ul.page-numbers {
+      display: flex;
+      gap: 16px;
+    }
+
+    a.page-numbers,
+    span.page-numbers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 32px;
+      height: 32px;
+      padding: 4px 12px;
+      font-size: rem(14px);
+      line-height: 1;
+      border: solid 1px var(--color-line-weak);
+      transition: 0.3s;
+      &:hover {
+        background-color: var(--color-line-weak);
+      }
+    }
+
+    .page-numbers.current {
+      border: solid 1px var(--color-primary);
+    }
+
+    .prev,
+    .next {
+      &::after {
+        display: inline-block;
+        width: 6px;
+        height: 10px;
+        vertical-align: bottom;
+        content: '';
+        background-color: currentColor;
+        @include mask-icon('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 10"><path d="M.66107.315218C.458159.50252.445507.81885.632808 1.02176L4.31976 5.01595.632808 9.01015c-.187302.20291-.174649.51924.028262.70654.20291.1873.51924.17465.70654-.02826l4.31305-4.67248L1.36761.343479C1.18031.140569.86398.127916.66107.315218Z"/></svg>');
+      }
+    }
+    .prev {
+      &::after {
+        transform: scale(-1, 1);
+      }
+    }
+  }
+}
+
+@mixin post-nav($className: 'post-nav-links') {
+  .c-#{$className} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+    .post-page-numbers {
+      position: relative;
+      z-index: 0;
+      font-size: rem(14px);
+      color: var(--color-text-weak);
+      transition: 0.3s;
+      &:hover {
+        color: var(--color-primary);
+      }
+      &:not(:first-child) {
+        &::before {
+          position: absolute;
+          left: -16px;
+          width: 1px;
+          height: 100%;
+          content: '';
+          background-color: var(--color-line);
+        }
+      }
+    }
+  }
+}

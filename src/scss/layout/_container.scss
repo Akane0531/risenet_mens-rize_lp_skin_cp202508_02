@@ -1,0 +1,16 @@
+@use 'sass:string';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+$container: map.get($break-points, lg);
+
+.l-container {
+  margin-inline: max(1rem, ((100% - var(--container)) / 2));
+
+  @each $key, $width in $break-points {
+    &--#{$key} {
+      margin-inline: max(1rem, ((100% - var(--media-#{$key})) / 2));
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'abstracts' as *;
+
+@mixin section {
+  position: relative;
+  z-index: 0;
+
+  .flow__inner {
+    padding: 55px 0 68px;
+    @include mobile {
+      padding: vw-calc(55, sm) 0 vw-calc(68, sm);
+    }
+  }
+
+  .flow__slider {
+    margin-top: 24px;
+    counter-reset: counter;
+    @include mobile {
+      margin-top: vw-calc(24, sm);
+    }
+
+    .swiper-wrapper {
+      padding-bottom: 12px;
+    }
+  }
+
+  .flow__slide {
+    display: flex;
+    flex-direction: column;
+    width: 478px;
+    height: auto;
+    counter-increment: counter;
+    @include mobile {
+      width: vw-calc(478, sm);
+    }
+
+    .flow__slide-inner {
+      flex-grow: 1;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 24px;
+      box-shadow: 0px 0px 20px 0px rgba(#f2e4c2, 0.8);
+      @include mobile {
+        border-radius: vw-calc(24, sm);
+        box-shadow: 0px 0px vw-calc(20, sm) 0px rgba(#f2e4c2, 0.8);
+      }
+    }
+
+    .flow__slide-num {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: -24px;
+      @include mobile {
+        margin-bottom: vw-calc(-24, sm);
+      }
+    }
+
+    .flow__slide-num-label {
+      display: block;
+      font-family: Roboto;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: #bcbcbc;
+      text-align: center;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: vw-calc(24, sm);
+      }
+    }
+
+    .flow__slide-num-number {
+      &::after {
+        display: block;
+        margin-top: -4px;
+        font-family: 'FriendlyExpart';
+        font-size: 62px;
+        color: transparent;
+        color: #f8f3e7;
+        text-align: center;
+        content: counter(counter, decimal-leading-zero);
+        -webkit-text-stroke-color: #bcbcbc;
+        -webkit-text-stroke-width: 1px;
+
+        @include mobile {
+          margin-top: vw-calc(-4, sm);
+          font-size: vw-calc(62, sm);
+          -webkit-text-stroke-width: vw-calc(1, sm);
+        }
+      }
+    }
+
+    .flow__slide-num-image {
+      width: 78px;
+      img {
+        width: 100%;
+      }
+      @include mobile {
+        width: vw-calc(78, sm);
+      }
+    }
+
+    .flow__slide-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 146px;
+      padding: 34px;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: normal;
+      color: #bcbcbc;
+      text-align: center;
+      @include mobile {
+        min-height: vw-calc(146, sm);
+        padding: vw-calc(34, sm);
+        font-size: vw-calc(24, sm);
+      }
+    }
+
+    .flow__slide-img {
+      img {
+        width: 100%;
+      }
+    }
+
+    .flow__slide-desc {
+      padding: 34px;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.7;
+      color: #88837f;
+
+      @include mobile {
+        padding: vw-calc(34, sm);
+        font-size: vw-calc(22, sm);
+      }
+    }
+  }
+}

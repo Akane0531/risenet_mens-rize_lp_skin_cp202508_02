@@ -1,0 +1,36 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'badge01') {
+  .c-#{$className} {
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .c-#{$className}__inner {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: rem(14px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-text);
+    border: solid 1px var(--color-primary);
+    transition: 0.3s;
+
+    @include mobile {
+      padding: 6px 12px;
+      font-size: rem(12px);
+    }
+  }
+
+  a.c-#{$className}:hover .c-#{$className}__inner {
+    background-color: var(--color-primary);
+  }
+}

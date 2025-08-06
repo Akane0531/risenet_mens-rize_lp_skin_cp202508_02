@@ -1,0 +1,104 @@
+@use 'sass:map';
+
+// asset path
+// ------------------------------------------------------------------------
+
+$pathAsset: '..' !default;
+$pathImage: '../image' !default;
+$pathFont: '../font' !default;
+
+// break points
+// ------------------------------------------------------------------------
+
+$break-points: (
+  'max': 1980px,
+  'xl': 1280px,
+  'lg': 1024px,
+  'md': 768px,
+  'sm': 640px,
+  'xs': 375px,
+);
+
+$desktop: map.get($break-points, md);
+$mobile: map.get($break-points, sm);
+
+// z-index
+// z-index: map.get($z-index, header);
+// ------------------------------------------------------------------------
+
+$z-index: (
+  nav: 5,
+  header: 10,
+  modal: 20,
+  loading: 100,
+);
+
+// colors
+// -----------------------------------------------------------
+
+$colors: (
+  'body': #eeeeee,
+  'text': #1c1c1c,
+  'text-weak': #393939,
+  'primary': #10486c,
+  'secondary': #58707c,
+  'accent': #cbb48a,
+  'bg': #fcf6ee,
+  'bg2': #36312c,
+  'bg3': #e2e3e3,
+);
+
+$white: #fff !default;
+$black: #000 !default;
+
+$color-variations: primary, accent, body, text;
+
+$yiq-contrasted-threshold: 150 !default;
+$yiq-text-dark: map.get($colors, text);
+$yiq-text-light: map.get($colors, base);
+
+$min-contrast-ratio: 4.5 !default;
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark: $black !default;
+$color-contrast-light: $white !default;
+
+$facebook: #1877f2;
+$twitter: #1da1f2;
+$x: #000000;
+$line: #00b900;
+$pinterest: #bd081c;
+$pocket: #ee4056;
+$hatena: #008fde;
+
+// rounded
+// -----------------------------------------------------------
+$rounded: (
+  'full': 100vmax,
+  'xl': 24px,
+  'lg': 16px,
+  'md': 12px,
+  'sm': 8px,
+  'xs': 4px,
+);
+
+// fonts
+// -----------------------------------------------------------
+
+$font-body: "'Noto Sans JP'", sans-serif;
+$font-display: "'Noto Sans JP'", sans-serif;
+
+$font-sizes: (
+  'xs': 12px,
+  'sm': 14px,
+  'md': 16px,
+  'lg': 18px,
+  'xl': 20px,
+  '2xl': 24px,
+  '3xl': 30px,
+  '4xl': 36px,
+  '5xl': 48px,
+  '6xl': 60px,
+  '7xl': 72px,
+  '8xl': 96px,
+  '9xl': 128px,
+);

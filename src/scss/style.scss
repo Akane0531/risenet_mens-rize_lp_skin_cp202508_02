@@ -1,0 +1,480 @@
+@use 'sass:map';
+
+@use 'components' as *;
+@use 'abstracts' as *;
+@use 'base' as *;
+@use 'layout' as *;
+
+@use 'utility' as *;
+@use 'pages' as *;
+
+// layouts
+// -----------------------------------------------------------
+
+.wrapper {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  background-color: map.get($colors, body);
+}
+
+.inner {
+  margin-inline: max(34px, (100% - 600px)/2);
+
+  @include mobile {
+    margin-inline: max(vw-calc(34, sm), ((100% - vw-calc(640, sm)) / 2));
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: calc((100% - 640px) / 2);
+  z-index: 10;
+  width: min(640px, 100%);
+  background-color: #fff;
+
+  @include mobile {
+    left: 0;
+    width: 100%;
+  }
+
+  .header__inner {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 110px;
+    padding-left: 24px;
+    @include mobile {
+      gap: vw-calc(64, sm);
+      min-height: vw-calc(110, sm);
+      padding-left: vw-calc(24, sm);
+    }
+  }
+
+  .header__logo {
+    flex-shrink: 0;
+    width: 227px;
+    @include mobile {
+      width: vw-calc(227, sm);
+    }
+  }
+
+  .header__btnArea {
+    flex-grow: 1;
+  }
+
+  .header__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 76px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-align: center;
+    letter-spacing: letter-spacing(40);
+    background-image: linear-gradient(90deg, #284e70 0%, #3078b8 100%);
+    border-radius: 100vmax 0 0 100vmax;
+    @include mobile {
+      min-height: vw-calc(76, sm);
+      font-size: vw-calc(20, sm);
+    }
+
+    .header__button-inner {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      @include mobile {
+        gap: vw-calc(8, sm);
+      }
+    }
+  }
+
+  .header__icon {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    @include mobile {
+      width: vw-calc(20, sm);
+      height: vw-calc(20, sm);
+    }
+    &--calendar {
+      background-image: url(../image/common/icon_calendar.png);
+    }
+  }
+}
+
+.footer {
+  padding: 0 0 14px;
+  @include mobile {
+    padding: 0 0 vw-calc(14, sm);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+    align-items: center;
+    @include mobile {
+      gap: vw-calc(160, sm);
+    }
+  }
+
+  .footer__logo {
+    max-width: 140px;
+    @include mobile {
+      width: vw-calc(140, sm);
+    }
+  }
+
+  .footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .footer__list-item:not(:last-child)::after {
+      margin: 0 8px;
+      font-size: 20px;
+      line-height: 1.53;
+      content: '|';
+      @include mobile {
+        margin: 0 vw-calc(8, sm);
+        font-size: vw-calc(20, sm);
+      }
+    }
+
+    .footer__list-item a {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 2.8;
+      color: #313030;
+      text-align: center;
+      @include mobile {
+        font-size: vw-calc(20, sm);
+      }
+    }
+  }
+
+  .footer__copyright {
+    display: block;
+    margin-top: 26px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.53;
+    color: #313030;
+    text-align: center;
+    letter-spacing: letter-spacing(10);
+    @include mobile {
+      margin-top: vw-calc(26, sm);
+      font-size: vw-calc(16, sm);
+    }
+  }
+}
+
+// utility
+// -----------------------------------------------------------
+
+@include scroll-default();
+
+.icon-smile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  &::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: currentColor;
+    mask-image: url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNS4zNDggMTQuMzQyIj48cGF0aCBkPSJNMTIuNjc0IDE0LjM0MmgtLjAyN2ExNy41NTUgMTcuNTU1IDAgMCAxLTYuOS0xLjM4MUExNy44ODUgMTcuODg1IDAgMCAxIC4wMDUgOS4xMDZsMi4xMzMtMi4xMzNhMTQuODY4IDE0Ljg2OCAwIDAgMCA0Ljc4NyAzLjIxMyAxNC42ODIgMTQuNjgyIDAgMCAwIDUuNzU2IDEuMTQ4IDE0LjYzMiAxNC42MzIgMCAwIDAgNS43NDktMS4xNDggMTQuODg4IDE0Ljg4OCAwIDAgMCA0Ljc4NS0zLjIxM2wyLjEzMyAyLjEzM2ExNy44ODUgMTcuODg1IDAgMCAxLTUuNzQyIDMuODU1IDE3LjUyMSAxNy41MjEgMCAwIDEtNi44OTEgMS4zODFoLS4wNDFaTTExLjQ0NC4zMTFhMS4wMzUgMS4wMzUgMCAwIDEgLjI2Ljd2Mi4yODNhMSAxIDAgMCAxLS4zMDguNzExLjk3Mi45NzIgMCAwIDEtLjcuMjg3SDguMzRhMSAxIDAgMCAxLS41MzMtLjM2OSAxLjAyIDEuMDIgMCAwIDEtLjIwNS0uNjI5bC4wMjctMi4yN2EuOTg4Ljk4OCAwIDAgMSAuMy0uNzI1Ljk3Mi45NzIgMCAwIDEgLjcxMS0uM2gyLjA2NGEuOTgyLjk4MiAwIDAgMSAuNzQuMzEyWm01LjMtLjMxNGEuOTg3Ljk4NyAwIDAgMSAuNy4zMDguOTcyLjk3MiAwIDAgMSAuMjg3Ljd2Mi4yODNhLjk3Ni45NzYgMCAwIDEtLjMwOC42NjMgMSAxIDAgMCAxLS42NzcuMjhoLTIuMDcyYS43LjcgMCAwIDEtLjEzNy4wMTQuNy43IDAgMCAxLS4xMzctLjAxNC45NjEuOTYxIDAgMCAxLS41MjYtLjM1NS45NzkuOTc5IDAgMCAxLS4yMTItLjYxNXYtMi4yNWEuOTY1Ljk2NSAwIDAgMSAuMy0uNzE4Ljk4My45ODMgMCAwIDEgLjcxMi0uMjkzaDIuMDc0WiIvPjwvc3ZnPg==');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+}
+
+.bg {
+  &-white {
+    background-color: $white !important;
+  }
+  &-black {
+    background-color: $black !important;
+  }
+
+  @each $key, $color in $colors {
+    &-#{$key} {
+      background-color: #{$color};
+    }
+  }
+}
+
+.text {
+  &-white {
+    color: $white !important;
+  }
+  &-black {
+    color: $black !important;
+  }
+
+  @each $key, $color in $colors {
+    &-#{$key} {
+      color: #{$color} !important;
+    }
+  }
+}
+
+// components
+// -----------------------------------------------------------
+@keyframes scaleChange {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.9;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.button {
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  height: 105px;
+  color: #fff;
+  background-image: linear-gradient(90deg, #494986 0%, #235ebe 100%);
+  border-radius: 100vmax;
+  transition: 0.3s;
+  animation: scaleChange 2s infinite;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  @include mobile {
+    gap: vw-calc(16, sm);
+    min-width: vw-calc(590, sm);
+    height: vw-calc(105, sm);
+  }
+
+  .button__inner {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: letter-spacing(40);
+
+    @include mobile {
+      font-size: vw-calc(30, sm);
+    }
+  }
+
+  .button__icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &--before {
+      width: 30px;
+      height: 30px;
+      background-image: url(../img/common/icon_calendar.png);
+
+      @include mobile {
+        width: vw-calc(30, sm);
+        height: vw-calc(30, sm);
+      }
+    }
+
+    &--after {
+      width: 23px;
+      height: 9px;
+      background-image: url(../img/common/icon_arrow.png);
+
+      @include mobile {
+        width: vw-calc(23, sm);
+        height: vw-calc(9, sm);
+      }
+    }
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.9;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.1em;
+  background-image: linear-gradient(to right, #2e5490, #575758);
+
+  @include mobile {
+    min-height: vw-calc(100, sm);
+    font-size: vw-calc(34, sm);
+  }
+}
+
+.movie {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.section__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  &--top {
+    height: min(306px, 100%);
+    @include mobile {
+      height: min(vw-calc(306, sm), 100%);
+    }
+  }
+
+  &--center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      object-fit: contain;
+      object-position: center;
+    }
+  }
+}
+
+.accordion {
+  .accordion__button {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 94px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.9;
+    color: #393939;
+    text-align: center;
+    letter-spacing: 0.1em;
+    background-image: linear-gradient(to right, #adadad, #f0f0f0);
+
+    &--gold {
+      background-image: linear-gradient(to right, #cbb48a, #ddcfc3);
+    }
+
+    @include mobile {
+      min-height: vw-calc(94, sm);
+      font-size: vw-calc(34, sm);
+    }
+  }
+
+  .accordion__icon {
+    position: absolute;
+    top: calc(50% - 25px);
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+    @include mobile {
+      top: calc(50% - vw-calc(25, sm));
+      right: vw-calc(30, sm);
+      width: vw-calc(50, sm);
+      height: vw-calc(50, sm);
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      top: calc(25px - 1px);
+      right: calc(25px - 8px);
+      width: 16px;
+      height: 2px;
+      content: '';
+      background-color: currentColor;
+      transition: 0.3s;
+
+      @include mobile {
+        top: calc(vw-calc(25, sm) - vw-calc(1, sm));
+        right: calc(vw-calc(25, sm) - vw-calc(8, sm));
+        width: vw-calc(16, sm);
+        height: vw-calc(2, sm);
+      }
+    }
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.is-active .accordion__icon {
+    transform: rotate(90deg);
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  &.is-active .accordion__label--open {
+    display: none;
+  }
+  &:not(.is-active) .accordion__label--close {
+    display: none;
+  }
+}
+
+.cta {
+  @include cta-default;
+}
+
+.block {
+  padding: 80px 0 90px;
+
+  @include mobile {
+    padding: vw-calc(80, sm) 0 vw-calc(90, sm);
+  }
+
+  .block__inner {
+    margin-inline: max(34px, (100% - 600px)/2);
+    background-color: #cecbc9;
+    padding: 30px 40px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 2;
+    color: #241f1f;
+    border-radius: 5px;
+    @include mobile {
+      margin-inline: max(vw-calc(34, sm), ((100% - vw-calc(640, sm)) / 2));
+      font-size: vw-calc(18, sm);
+      padding: vw-calc(30, sm) vw-calc(40, sm);
+      border-radius: vw-calc(5, sm);
+    }
+  }
+}

@@ -1,0 +1,230 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'abstracts' as *;
+
+@mixin section {
+  position: relative;
+  z-index: 0;
+
+  .faq__inner {
+    padding: 55px 0 68px;
+    margin-inline: max(24px, ((100% - 640px) / 2));
+    @include mobile {
+      padding: vw-calc(55, sm) 0 vw-calc(68, sm);
+      margin-inline: max(vw-calc(24, sm), ((100% - vw-calc(640, sm)) / 2));
+    }
+  }
+
+  .faq__title {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0px 0px 8px #7f9696, 0px 0px 4px #7f9696, 0px 0px 8px #7f9696;
+    letter-spacing: letter-spacing(50);
+    @include mobile {
+      font-size: vw-calc(40, sm);
+      text-shadow: 0px 0px vw-calc(8, sm) #7f9696, 0px 0px vw-calc(4, sm) #7f9696, 0px 0px vw-calc(8, sm) #7f9696;
+    }
+  }
+
+  .faq__accordions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 56px;
+    @include mobile {
+      gap: vw-calc(8, sm);
+      margin-top: vw-calc(56, sm);
+    }
+  }
+
+  .faq-accordion {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 16px 0px rgba(#000, 0.1);
+    @include mobile {
+      border-radius: vw-calc(8, sm);
+      box-shadow: 0px 0px vw-calc(16, sm) 0px rgba(#000, 0.1);
+    }
+  }
+
+  .faq-accordion__header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 24px;
+    @include mobile {
+      gap: vw-calc(16, sm);
+      padding: vw-calc(24, sm);
+    }
+  }
+
+  .faq-accordion__title {
+    flex-grow: 1;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+    color: #747474;
+    @include mobile {
+      font-size: vw-calc(24, sm);
+    }
+  }
+
+  .faq-accordion__label {
+    flex-shrink: 0;
+    font-family: Roboto;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #8fa8aa;
+    @include mobile {
+      font-size: vw-calc(44, sm);
+    }
+
+    &--red {
+      color: #db4848;
+    }
+  }
+
+  .faq-accordion__icon {
+    position: relative;
+    z-index: 0;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: 0.3s;
+    @include mobile {
+      width: vw-calc(20, sm);
+      height: vw-calc(20, sm);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 20px;
+      height: 2px;
+      content: '';
+      background-color: #333;
+      transition: 0.3s;
+      @include mobile {
+        width: vw-calc(20, sm);
+        height: vw-calc(2, sm);
+      }
+    }
+    &::before {
+      transform: translate(-50%, -50%);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  .faq-accordion.is-active .faq-accordion__icon {
+    transform: rotate(90deg);
+    &::before {
+      opacity: 0;
+    }
+  }
+
+  .faq-accordion__content {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #333;
+    border-top: 2px solid #d6ecef;
+    @include mobile {
+      gap: vw-calc(16, sm);
+      padding: vw-calc(24, sm);
+      font-size: vw-calc(20, sm);
+      border-top-width: vw-calc(2, sm);
+    }
+  }
+
+  .faq__block {
+    padding: 0 20px 40px;
+    border-bottom: solid 1px #beb8b6;
+
+    @include mobile {
+      padding: 0 vw-calc(20, sm) vw-calc(40, sm);
+    }
+
+    & + .faq__block {
+      margin-top: 64px;
+
+      @include mobile {
+        margin-top: vw-calc(64, sm);
+      }
+    }
+  }
+
+  .faq__label {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: map.get($colors, secondary);
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      gap: vw-calc(16, sm);
+      font-size: vw-calc(26, sm);
+    }
+
+    &::before {
+      flex-shrink: 0;
+      font-family: 'Oswald';
+      font-size: 40px;
+      line-height: 1.5;
+      text-align: center;
+      letter-spacing: 0.1em;
+      content: 'Q';
+      @include mobile {
+        font-size: vw-calc(40, sm);
+      }
+    }
+  }
+
+  .faq__body {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      gap: vw-calc(16, sm);
+      margin-top: vw-calc(40, sm);
+      font-size: vw-calc(24, sm);
+    }
+
+    &::before {
+      flex-shrink: 0;
+      font-family: 'Oswald';
+      font-size: 40px;
+      line-height: 1.5;
+      text-align: center;
+      letter-spacing: 0.1em;
+      content: 'A';
+      @include mobile {
+        font-size: vw-calc(40, sm);
+      }
+    }
+  }
+
+  .faq__subscript {
+    font-weight: 400;
+  }
+}

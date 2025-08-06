@@ -1,0 +1,31 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'scroll') {
+  .u-#{$className}--fadeIn {
+    transition: opacity 0.6s, transform 0.6s;
+    &:not(.is-active) {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  .u-#{$className}--fadeInBlur {
+    transition: opacity 0.6s, transform 0.6s, filter 0.6s;
+    &:not(.is-active) {
+      filter: blur(8px);
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  .u-#{$className}--clipInRight {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition: clip-path 0.4s;
+    &:not(.is-active) {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+  }
+}

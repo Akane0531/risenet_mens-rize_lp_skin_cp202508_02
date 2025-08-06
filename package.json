@@ -1,5 +1,5 @@
 {
-  "name": "rizenet_template",
+  "name": "risenet_mens-rize_lp_skin_cp202508_02",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "destyle.css": "^4.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.27.11",

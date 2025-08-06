@@ -1,0 +1,158 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'variables' as *;
+
+// mixin
+// 増えてきたら個別フォルダへ
+// -----------------------------------------------------------
+
+@mixin max-width($media) {
+  $value: null;
+  @if meta.type-of($media) == 'number' {
+    $value: $media;
+  } @else if map-has-key($break-points, $media) {
+    $value: map.get($break-points, $media);
+  } @else {
+    @warn '"#{$media}"は定義されていません';
+  }
+
+  @if $value {
+    @media (max-width: ($value - 0.02)) {
+      @content;
+    }
+  }
+}
+
+@mixin min-width($media) {
+  $value: null;
+  @if meta.type-of($media) == 'number' {
+    $value: $media;
+  } @else if map-has-key($break-points, $media) {
+    $value: map.get($break-points, $media);
+  } @else {
+    @warn '"#{$media}"は定義されていません';
+  }
+
+  @if $value {
+    @media (min-width: ($value)), print {
+      @content;
+    }
+  }
+}
+
+@mixin desktop {
+  @include min-width($mobile) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include max-width($mobile) {
+    @content;
+  }
+}
+
+@mixin container {
+  margin-inline: string.unquote('max(1rem, ((100% - var(--container)) / 2))');
+
+  @include max-width($md) {
+    margin-inline: string.unquote('max(0.6rem, ((100% - var(--container)) / 2))');
+  }
+}
+
+@mixin line-clamp($count: 3) {
+  @if meta.type-of($count) != 'number' {
+    @error 'line-clampの引数は必ず数値で指定してください';
+  }
+
+  @if $count == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $count;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: unset;
+  }
+}
+
+// /**
+//  * Base64でエンコードされたSVG画像を使用してアイコンをマスクするMixin
+//  * @param {string} $base64 - Base64でエンコードされたSVG画像
+//  */
+@mixin mask-icon($svg, $type: 'charset=UTF-8') {
+  mask-image: url('data:image/svg+xml;#{$type}, #{$svg}');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+@mixin mask-image-svg($svg, $type: 'charset=UTF-8') {
+  mask-image: url('data:image/svg+xml;#{$type}, #{$svg}');
+}
+
+@mixin sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin lineHeightCrop($line-height) {
+  &::before {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: calc((1 - #{$line-height}) * 0.5em);
+    content: '';
+  }
+  &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    margin-bottom: calc((1 - #{$line-height}) * 0.5em);
+    content: '';
+  }
+}
+
+@mixin textCrop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+  // Mixin generated at: http://text-crop.eightshapes.com/?typeface-selection=google-font&typeface=Teko&custom-typeface-name=Helvetica&custom-typeface-url=&custom-typeface-weight=400&custom-typeface-style=normal&weight-and-style=300&size=31&line-height=1&top-crop=3&bottom-crop=8
+
+  // Configured in Step 1
+  $top-crop: 3;
+  $bottom-crop: 8;
+  $crop-font-size: 31;
+  $crop-line-height: 1;
+
+  // Apply values to calculate em-based margins that work with any font size
+  $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+  $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+  // Mixin output
+  line-height: $line-height;
+
+  &::before,
+  &::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: '';
+  }
+
+  &::before {
+    margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
+  }
+
+  &::after {
+    margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
+  }
+}

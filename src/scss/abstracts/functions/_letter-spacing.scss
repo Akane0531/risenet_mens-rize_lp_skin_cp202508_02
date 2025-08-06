@@ -1,0 +1,5 @@
+@use 'sass:math';
+
+@function letter-spacing($va) {
+  @return math.div($va, 1000) * 1em;
+}

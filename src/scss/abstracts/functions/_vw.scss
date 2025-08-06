@@ -1,0 +1,39 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use '../variables' as *;
+
+//  ビューポート幅に基づいてサイズを計算する関数
+//  @param {Number} $size - 計算するサイズ
+//  @param {Number|String} $media - メディアブレイクポイントの値またはキー
+//  @return {String|null} CSSのcalc関数の結果またはnull
+
+// 使い方例
+// margin-left: vw-calc(24, lg); // mapのキーが使える
+// width: vw-calc(280, 1280px); // 直接px値も使える
+// padding-right: vw-calc(16, 1024); // 直接数値も使える
+
+@function vw-calc($size, $media) {
+  $bp-value: null;
+  // そのまま数値を渡されたらそれを使う
+  @if meta.type-of($media) == 'number' {
+    $bp-value: $media;
+  }
+  // mapのキーだったら値を取得
+  @else if map.has-key($break-points, $media) {
+    $bp-value: map.get($break-points, $media);
+  }
+  // どちらでもなければ警告
+  @else {
+    @warn '"#{$media}"は$break-pointsに定義されていません';
+    @return null; // 失敗時はnull返す
+  }
+
+  // px単位つきの場合は数値だけに
+  $bp-value: if(math.unit($bp-value) == 'px', math.div($bp-value, 1px), $bp-value);
+
+  @if $bp-value and $size {
+    @return calc(100vw * (#{$size} / #{$bp-value}));
+  }
+  @return null;
+}

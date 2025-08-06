@@ -1,0 +1,49 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'frame01') {
+  .c-#{$className} {
+    pointer-events: none;
+
+    &::before,
+    &::after,
+    span::before,
+    span::after {
+      position: absolute;
+      z-index: 1;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      content: '';
+      background-color: currentColor;
+      @include mask-icon('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><path fill-rule="evenodd" d="M12.3077.333008H0V12.7481C0 5.89145 5.51034.333008 12.3077.333008Z" clip-rule="evenodd"/><path d="M20 .333008h20v1H20zM1 20.333v20H0v-20z" opacity=".5"/></svg>');
+      @include mobile {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+    }
+    &::after {
+      top: 0;
+      right: 0;
+      transform: scaleX(-1);
+    }
+
+    span::before {
+      bottom: 0;
+      left: 0;
+      transform: scaleY(-1);
+    }
+    span::after {
+      right: 0;
+      bottom: 0;
+      transform: scale(-1);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@use 'abstracts' as *;
+
+.l-footer {
+  margin-top: auto;
+  .l-footer__inner {
+    display: grid;
+    gap: 40px;
+    padding: 80px 0 24px;
+  }
+
+  .l-footer__content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  .l-footer__logo {
+    img,
+    svg {
+      width: 220px;
+    }
+  }
+  .l-footer__copy {
+    text-align: center;
+  }
+}

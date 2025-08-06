@@ -1,0 +1,54 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+@mixin default($className: 'accordion01') {
+  .c-#{$className} {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-line-weak);
+  }
+
+  .c-#{$className}__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: rem(18px);
+    font-weight: 400;
+    letter-spacing: letter-spacing(50);
+    @include mobile {
+      font-size: rem(16px);
+    }
+  }
+
+  .c-#{$className}__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-left: auto;
+    border: 1px solid var(--color-line-weak);
+    transition: 0.4s;
+    &::before {
+      width: 18px;
+      height: 10px;
+      content: '';
+      background-color: currentColor;
+      transition: 0.4s;
+      @include mask-icon('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 10"><path fill-rule="evenodd" d="M17.3314.463949c.3851.365343.3851.957681 0 1.323021L9.81748 8.91593c-.38508.36535-1.00941.36535-1.39448 0L.909043 1.78697C.52397 1.42163.52397.829291.909043.463948c.385077-.3653431 1.009397-.3653431 1.394477 0L9.12024 6.9314 15.937.463949c.385-.3653435 1.0094-.3653434 1.3944 0Z" clip-rule="evenodd"/></svg>');
+    }
+  }
+
+  .c-#{$className}.is-active .c-#{$className}__icon {
+    border: 1px solid var(--color-primary);
+
+    &::before {
+      transform: rotate(-180deg);
+    }
+  }
+
+  .c-#{$className}__content {
+    padding-top: 16px;
+  }
+}

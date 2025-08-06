@@ -1,0 +1,13 @@
+@use 'sass:math';
+
+// /**
+//  * ピクセル単位をミリメートル単位に変換する関数
+//  *
+//  * @param {number} $px - 変換するピクセル値
+//  * @param {number} $dpi - 解像度（オプション、デフォルトは72）
+//  * @return {number} ミリメートル単位の値
+//  */
+
+@function px_to_mm($px, $dpi: 72) {
+  @return math.div($px, $dpi) * 25.4mm;
+}

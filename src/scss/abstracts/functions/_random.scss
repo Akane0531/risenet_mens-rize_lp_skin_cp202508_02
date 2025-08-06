@@ -1,0 +1,9 @@
+@use 'sass:math';
+
+@function weighted-random($weight: 0.5) {
+  @if math.random() <= $weight {
+    @return 1;
+  } @else {
+    @return 0;
+  }
+}

@@ -1,0 +1,33 @@
+@use 'sass:map';
+@use 'sass:list';
+
+@use 'abstracts' as *;
+
+:root {
+  --font-body: #{$font-body};
+  --font-display: #{$font-display};
+
+  @each $key, $width in $break-points {
+    --media-#{$key}: #{$width};
+  }
+
+  @each $key, $width in $rounded {
+    --rounded-#{$key}: #{$width};
+  }
+
+  @each $key, $color in $colors {
+    --color-#{$key}: #{$color};
+
+    @if list.index($color-variations, $key) {
+      // $color-variations に 含まれる場合はカラーバリエーションを作成
+      $color-variations: create-color-variations($color);
+
+      @each $level, $value in $color-variations {
+        --color-#{$key}-#{$level}: #{$value};
+      }
+    }
+  }
+
+  --container: #{map.get($break-points, lg)};
+  --gap: #{rem(20px)};
+}

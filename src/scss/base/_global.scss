@@ -1,0 +1,72 @@
+// サイトを構成する上で、デザインの基本の下地、土台となるスタイルを定義
+// タグ自体にスタイルを定義
+// 基本の文字サイズやフォントファミリーなどの追加
+
+@use 'sass:math';
+@use 'sass:map';
+
+@use 'abstracts' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-body;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: $font-body;
+  font-size: 16px;
+  font-kerning: normal;
+  color: #313030;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background-color: #fff;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+
+  @include mobile {
+    font-size: vw-calc(16, sm);
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+iframe,
+object,
+embed {
+  max-width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #dadce0;
+  border-radius: 10px;
+}
+
+:is(h1, h2, h3, h4, h5, h6) {
+  scroll-margin-top: 100px;
+}

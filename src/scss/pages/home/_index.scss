@@ -1,0 +1,26 @@
+@use 'sass:string';
+
+@use 'abstracts' as *;
+@use 'components' as components;
+
+@use 'payment' as payment;
+@use 'flow' as flow;
+@use 'faq' as faq;
+@use 'clinic' as clinic;
+
+.home main {
+  display: grid;
+
+  .payment {
+    @include payment.section;
+  }
+  .flow {
+    @include flow.section;
+  }
+  .faq {
+    @include faq.section;
+  }
+  .clinic {
+    @include clinic.section;
+  }
+}
