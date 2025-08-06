@@ -1,0 +1,39 @@
+{
+  "paths": {
+    "pages": {
+      "src": "./src/pages",
+      "target": "./src/pages/**/*.{html,php}",
+      "dist": "/"
+    },
+    "include": {
+      "src": "./src/include",
+      "target": "./src/include/**/*.{html,php,inc}",
+      "dist": "/include"
+    },
+    "styles": {
+      "src": "./src/scss",
+      "target": "./src/scss/**/*.{scss,css}",
+      "dist": "/assets/css"
+    },
+    "js": {
+      "src": "./src/js",
+      "target": "./src/js/**/!(_)*.js",
+      "dist": "/assets/js"
+    },
+    "image": {
+      "src": "./src/img",
+      "target": "./src/img/**",
+      "dist": "/assets/img"
+    },
+    "copy": {
+      "src": "./src/!(pages|include|js|img)",
+      "target": "./src/!(pages|include|js|img)/**/*",
+      "dist": "/assets/"
+    }
+  },
+  "replace": [
+    { "from": "url('https://www.example.com/assets/", "to": "url('/assets/" },
+    { "from": "href=\"https://www.example.com/assets/", "to": "href=\"/assets/" },
+    { "from": "src=\"https://www.example.com/assets/", "to": "src=\"/assets/" }
+  ]
+}
