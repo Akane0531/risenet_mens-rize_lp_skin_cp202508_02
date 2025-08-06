@@ -10,7 +10,7 @@ if(!isset($_COOKIE['mens_fpc'])) {
 }
 
 $current_url_without_query = "https://" . $_SERVER['HTTP_HOST'] . strtok($_SERVER['REQUEST_URI'], '?');
-$title ='【オリジオハイフ】導入記念価格1回63,840円';
+$title ='【オリジオハイフ】導入記念価格1回63,840円｜メンズリゼ';
 $detection ='皮膚を引き締める効果が高いオリジオXと、皮膚の土台であるSMAS筋膜に作用し、下がった組織を内側から持ち上げるハイフを組み合わせた治療です。';
 ?>
 <!DOCTYPE html>
